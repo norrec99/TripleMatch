@@ -34,4 +34,11 @@ public class Board : MonoBehaviour
             }
         }
     }
+    public void DisableAllTileButtons()
+    {
+        foreach (Row row in rows)
+        {
+            row.DisableAllTileButtons();
+        }
+    }
 }

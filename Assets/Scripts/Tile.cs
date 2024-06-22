@@ -28,9 +28,12 @@ public class Tile : MonoBehaviour
     {
         button.onClick.AddListener(OnButtonClick);
     }
-
     private void OnButtonClick()
     {
         BoardContainer.Instance.MoveObjectToTileHolder(gameObject);
+    }
+    public void DisableButton()
+    {
+        button.interactable = false;
     }
 }
