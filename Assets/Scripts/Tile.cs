@@ -1,14 +1,36 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Tile : MonoBehaviour
 {
-    [SerializeField] private Color baseColor, offsetColor;
-    [SerializeField] private SpriteRenderer spriteRenderer;
+    public int x;
+    public int y;
+    private Item item;
+    public Item Item 
+    { 
+        get => item; 
+        
+        set
+        {
+            if (item == value) return;
 
-    public void Init(bool isOffset)
+            item = value;
+            icon.sprite = item.sprite;
+        } 
+    }
+    public Image icon;
+    public Button button;
+
+    private void Awake()
     {
-        spriteRenderer.color = isOffset ? offsetColor : baseColor;
+        button.onClick.AddListener(OnButtonClick);
+    }
+
+    private void OnButtonClick()
+    {
+        BoardContainer.Instance.MoveObjectToTileHolder(gameObject);
     }
 }
