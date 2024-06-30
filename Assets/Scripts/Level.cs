@@ -33,4 +33,8 @@ public class Level : MonoBehaviour
             Debug.Log("Level complete!");
         }
     }
+    public bool IsLevelSuccess()
+    {
+        return tiles.Count == 0;
+    }
 }

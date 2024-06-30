@@ -27,7 +27,6 @@ public class MatchingArea : MonoBehaviour
         lastTile = selectedTile;
         lastTilePosition = selectedTile.transform.position;
         selectedTile.BoxCollider2D.enabled = false;
-        // TilesOverlapEvent -= selectedTile.CheckOverlap;
         TilesOverlapEvent?.Invoke();
         // Eşleşen taş varsa
         for (int i = slots.Length - 1; i >= 0; i--)
@@ -64,7 +63,7 @@ public class MatchingArea : MonoBehaviour
     }
     public void CheckMatch(int spriteID)
     {
-        // Eşleşme kontrolü
+        // Match control
         int matchCount = 0;
         List<Slot> matchedSlots = new List<Slot>();
         for (int i = 0; i < slots.Length; i++)
@@ -79,26 +78,35 @@ public class MatchingArea : MonoBehaviour
             }
         }
 
-        // 3'lü eşleşme varsa
+        // Triple match check
         if (matchCount >= 3)
         {
             for (int i = 0; i < 3; i++)
             {
-                Debug.Log("Matched");
                 TileObject tempTile = matchedSlots[i].Tile;
                 matchedSlots[i].Tile = null;
                 tempTile.transform.DOScale(0, 0.2f).SetEase(Ease.InBack).OnComplete(() =>
                 {
                     Destroy(tempTile.gameObject);
+                    if (Level.Instance.IsLevelSuccess())
+                    {
+                        GameManager.Instance.OnLevelSuccess();
+                    }
                 });
             }
             lastTile = null;
             MoveToSlots();
         }
+
+        // Game Over
+        if (slots[slots.Length-1].Tile != null)
+        {
+            GameManager.Instance.OnLevelFail();
+        }
     }
     public void MoveToSlots()
     {
-        //Slotlardaki Tile'ları kaydır.
+        //Move tiles in the slots
         List<TileObject> allTiles = new List<TileObject>();
 
         for (int i = 0; i < slots.Length; i++)

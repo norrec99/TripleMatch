@@ -14,9 +14,6 @@ public class TouchManager : MonoBehaviour
         _playerInput = GetComponent<PlayerInput>();
         _touchPositionAction = _playerInput.actions["TouchPosition"];
         _touchPressAction = _playerInput.actions["TouchPress"];
-
-        Debug.Log("_touchPositionAction " + _touchPositionAction);
-        Debug.Log("_touchPressAction " + _touchPressAction);
     }
 
     private void OnEnable()
