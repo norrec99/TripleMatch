@@ -28,7 +28,6 @@ public class Level : MonoBehaviour
             tiles.Remove(tile);
         }
 
-        Debug.Log("tiles.Count " + tiles.Count);
         if (tiles.Count == 0)
         {
             Debug.Log("Level complete!");

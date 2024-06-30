@@ -31,7 +31,6 @@ public class TouchManager : MonoBehaviour
     
     private void TouchPressed(InputAction.CallbackContext context)
     {
-        Debug.Log("touched");
         // if (!GameManager.isRunning) return;
         Vector3 worldPoint = Camera.main.ScreenToWorldPoint(_touchPositionAction.ReadValue<Vector2>());
         Vector2 touchPosition = new Vector2(worldPoint.x, worldPoint.y);
