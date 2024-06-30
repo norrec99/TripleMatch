@@ -73,13 +73,11 @@ public class TileObject : MonoBehaviour
     }
     public void OnTouch()
     {
-        Debug.Log("touched");
         Level.Instance.RemoveTile(this);
         boxCollider2D.enabled = false;
         transform.DOKill();
         transform.DOMove(MatchingArea.Instance.slots[slotID].transform.position, 0.2f).OnComplete((() =>
         {
-            Debug.Log("SpriteID: " + tileSpriteID);
             MatchingArea.Instance.CheckMatch(TileSpriteID);
         }));
     }

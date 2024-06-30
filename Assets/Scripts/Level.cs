@@ -13,13 +13,6 @@ public class Level : MonoBehaviour
     {
         Instance = this;
     }
-    private void Start()
-    {
-        for (int i = 0; i < transform.childCount; i++)
-        {
-            AddTile(transform.GetChild(i).GetComponent<TileObject>());
-        }
-    }
 
     public void AddTile(TileObject tile)
     {
@@ -35,6 +28,7 @@ public class Level : MonoBehaviour
             tiles.Remove(tile);
         }
 
+        Debug.Log("tiles.Count " + tiles.Count);
         if (tiles.Count == 0)
         {
             Debug.Log("Level complete!");
