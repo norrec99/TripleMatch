@@ -28,7 +28,7 @@
                 {
                     "name": "",
                     "id": "5a53d506-53ba-4701-a2e6-ad03135b150f",
-                    "path": "<Touchscreen>/position",
+                    "path": "<Mouse>/position",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -39,7 +39,7 @@
                 {
                     "name": "",
                     "id": "9874744d-0f62-4fd0-adc9-7f19942e6282",
-                    "path": "<Touchscreen>/primaryTouch/press",
+                    "path": "<Mouse>/press",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
